@@ -7,9 +7,10 @@ class My_home_case(MyTest):
         '''打开艾家公社小程序'''
         ha=my_home_operate(self.driver)
         ha.swipeDown()
+        sleep(10)
         a=ha.aijia_c()
         # ha.cekout_switch(a[1])
-        sleep(10)
+        sleep(50)
         ha.ToRedPond()
         # ha.click_t()
         # ha.cekout_switch(a[0])
