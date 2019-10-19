@@ -12,7 +12,6 @@ class my_home_operate(Page,My_home):
         :return:
         """
         self.find_element(*self.aijia_t).click()   ##点击艾家公社
-        sleep(5)
         print(self.driver.contexts)
         return self.driver.contexts
 
@@ -27,6 +26,18 @@ class my_home_operate(Page,My_home):
         # js='wx.createSelectorQuery().select(".redPondImg").click();'
         # self.driver.execute_script(js)
         ss = self.find_element(*self.toRedPond)
+        TouchActions(self.driver).tap(ss).perform()
+
+    def ToRedPond_close(self):
+        """
+        点击首页弹框
+        :return:
+        """
+        # self.find_element(*self.toRedPond).click()
+        # self.find_element(*self.tocloseHBC).click()
+        # js='wx.createSelectorQuery().select(".redPondImg").click();'
+        # self.driver.execute_script(js)
+        ss = self.find_element(*self.toRedPond_close)
         TouchActions(self.driver).tap(ss).perform()
 
     def Me(self):
@@ -46,6 +57,36 @@ class my_home_operate(Page,My_home):
         输入手机号
         :return:
         """
+        # self.find_element(*self.phone).click()
         self.find_element(*self.phone).send_keys(17602882784)
 
+    def send_password(self):
+        """
+        输入密码
+        :return:
+        """
+        self.find_element(*self.password).send_keys('159369sxl')
 
+    def Login(self):
+        """
+        点击登录按钮
+        :return:
+        """
+        q=self.find_element(*self.login)
+        TouchActions(self.driver).tap(q).perform()
+
+    def Setting(self):
+        """
+        点击系统设置
+        :return:
+        """
+        q = self.find_element(*self.setting)
+        TouchActions(self.driver).tap(q).perform()
+
+    def Logout(self):
+        """
+        点击退出登录
+        :return:
+        """
+        q = self.find_element(*self.logout)
+        TouchActions(self.driver).tap(q).perform()
