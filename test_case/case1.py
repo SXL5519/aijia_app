@@ -25,7 +25,7 @@ class My_home_case(MyTest):
         ha.ToRedPond()
 
     @logout
-    def test_me_case(self):
+    def test_login_case(self):
         '''登录'''
         ha=my_home_operate(self.driver)
         ha.swipeDown()
@@ -36,3 +36,40 @@ class My_home_case(MyTest):
         ha.send_phone()
         ha.send_password()
         ha.click_tap([[208,1072],[1072,1092]])
+
+    @logout
+    def test_register_case(self):
+        '''注册'''
+        ha = my_home_operate(self.driver)
+        ha.swipeDown()
+        a = ha.aijia_c()
+        ha.ToRedPond_close()
+        # ha.click_tap([[468,1344],[612,1491]])
+        ha.Me()
+        ha.Register()
+        ha.Register_phone()
+        ha.Register_auth_code()
+        ha.Register_password()
+        ha.Register_bu()
+
+    def test_browse_goods(self):
+        """
+        浏览商品
+        :return:
+        """
+        ha = my_home_operate(self.driver)
+        ha.swipeDown()
+        a = ha.aijia_c()
+        ha.ToRedPond_close()
+        ha.Class_g()
+        sleep(3)
+        a=ha.goods_s()
+        if a!=0:
+            sleep(2)
+            b=ha.good_all()
+            if b!=0:
+                sleep(2)
+            else:
+                print('无商品')
+        else:
+            print('无分类')

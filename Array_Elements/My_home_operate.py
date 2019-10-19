@@ -1,3 +1,4 @@
+import random
 from time import sleep
 
 from Element_position.my_home import My_home
@@ -6,6 +7,16 @@ from selenium.webdriver.common.touch_actions import TouchActions
 
 
 class my_home_operate(Page,My_home):
+
+    def Click(self,n):
+        """
+        点击方法
+        :return:
+        """
+        ss = self.find_element(*n)
+        TouchActions(self.driver).tap(ss).perform()
+
+
     def aijia_c(self):
         """
         点击微信小程序（艾家公社体验版）
@@ -27,8 +38,7 @@ class my_home_operate(Page,My_home):
         # js='wx.createSelectorQuery().select(".redPondImg").click();'
         # self.driver.execute_script(js)
         self.wait_element_located(self.driver, self.toRedPond)
-        ss = self.find_element(*self.toRedPond)
-        TouchActions(self.driver).tap(ss).perform()
+        self.Click(self.toRedPond)
 
     def ToRedPond_close(self):
         """
@@ -40,8 +50,7 @@ class my_home_operate(Page,My_home):
         # js='wx.createSelectorQuery().select(".redPondImg").click();'
         # self.driver.execute_script(js)
         self.wait_element_located(self.driver, self.toRedPond_close)
-        ss = self.find_element(*self.toRedPond_close)
-        TouchActions(self.driver).tap(ss).perform()
+        self.Click(self.toRedPond_close)
 
     def Me(self):
         """
@@ -50,8 +59,7 @@ class my_home_operate(Page,My_home):
         """
         # self.find_element(*self.me).click()
         self.wait_element_located(self.driver, self.me)
-        s=self.find_element(*self.me)
-        TouchActions(self.driver).tap(s).perform()
+        self.Click(self.me)
         print('点击成功')
         print(self.driver.contexts)
 
@@ -79,8 +87,7 @@ class my_home_operate(Page,My_home):
         :return:
         """
         self.wait_element_located(self.driver, self.login)
-        q=self.find_element(*self.login)
-        TouchActions(self.driver).tap(q).perform()
+        self.Click(self.login)
 
     def Setting(self):
         """
@@ -88,8 +95,7 @@ class my_home_operate(Page,My_home):
         :return:
         """
         self.wait_element_located(self.driver, self.setting)
-        q = self.find_element(*self.setting)
-        TouchActions(self.driver).tap(q).perform()
+        self.Click(self.setting)
 
     def Logout(self):
         """
@@ -97,5 +103,88 @@ class my_home_operate(Page,My_home):
         :return:
         """
         self.wait_element_located(self.driver, self.logout)
-        q = self.find_element(*self.logout)
-        TouchActions(self.driver).tap(q).perform()
+        self.Click(self.logout)
+
+    def Register(self):
+        """
+        点击注册
+        :return:
+        """
+        self.wait_element_located(self.driver,self.register)
+        self.Click(self.register)
+
+    def Register_phone(self):
+        """
+        注册输入手机号
+        :return:
+        """
+        self.wait_element_located(self.driver, self.register_phone)
+        self.find_element(*self.register_phone).send_keys(15500000001)
+
+    def Register_auth_code(self):
+        """
+        注册输入验证码
+        :return:
+        """
+        self.wait_element_located(self.driver, self.register_auth_code)
+        self.find_element(*self.register_auth_code).send_keys(9527)
+
+    def Register_password(self):
+        """
+        注册输入密码
+        :return:
+        """
+        self.wait_element_located(self.driver, self.register_password)
+        self.find_element(*self.register_password).send_keys(123456)
+
+    def Register_bu(self):
+        """
+        点击立即注册
+        :return:
+        """
+        self.wait_element_located(self.driver, self.register_bu)
+        self.Click(self.register_bu)
+
+    def Class_g(self):
+        """
+        点击分类
+        :return:
+        """
+        self.wait_element_located(self.driver, self.class_g)
+        self.Click(self.class_g)
+
+    def goods_s(self):
+        """
+        点击二级分类
+        :return:
+        """
+        self.wait_element_located(self.driver,self.goods)
+        l=self.find_elements(*self.goods)
+        print(len(l))
+        if len(l)>1:
+            i=random.randint(9,14)
+            print(i)
+            print(self.goods_n(i))
+            self.wait_element_located(self.driver, self.goods_n(i))
+            self.Click(self.goods_n(i))
+            return 1
+        else:
+            print('无数据')
+            return 0
+
+    def good_all(self):
+        """
+        点击分类下的商品
+        :return:
+        """
+        self.wait_element_located(self.driver, self.good_a)
+        l = self.find_elements(*self.good_a)
+        print(len(l))
+        if len(l)>1:
+            i = random.randint(1, 4)
+            print(i)
+            self.Click(self.good_a_n(i))
+            return 1
+        else:
+            print('无数据')
+            return 0

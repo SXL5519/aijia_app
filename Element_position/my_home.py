@@ -12,3 +12,19 @@ class My_home():
     # login = (By.NAME, "立即登录")
     setting=(By.XPATH,"//android.view.View[@text='系统设置']")
     logout=(By.XPATH,"//android.view.View[@text='退出登录']")
+    register=(By.XPATH,"//android.view.View[@text='快速注册']")
+    register_phone=(By.XPATH,"//android.view.View[@text='请输入您的手机号']")
+    register_auth_code=(By.XPATH,"//android.view.View[@text='请输入您的验证码']")
+    register_password=(By.XPATH,"//android.view.View[@text='请输入您的登录密码']")
+    register_bu=(By.CLASS_NAME,"android.widget.Button")###立即注册
+    class_g=(By.XPATH,"//android.widget.TextView[@text='分类']")
+    goods=(By.CLASS_NAME,"android.widget.Image")###所有二级分类图片
+    def goods_n(self,n):
+        good_i=(By.XPATH,"//android.webkit.WebView[@text='wx1ed73850b7173563:pages/main/class/class.html:VISIBLE']/android.widget.Image[%d]"%n)
+        return good_i
+
+    good_a=(By.CLASS_NAME,"android.widget.Image")##当前分类下的所有商品图片
+
+    def good_a_n(self,n):
+        good_n=(By.XPATH,"//android.view.View/android.view.View[4]/android.widget.Image[%d]"%n)
+        return good_n

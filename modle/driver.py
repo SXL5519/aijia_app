@@ -13,8 +13,8 @@ class Chrome():
         desired_caps['appActivity'] = 'com.tencent.mm.ui.LauncherUI'
         desired_caps['chromeOptions'] = {'androidProcess': 'com.tencent.mm:tools'}
         # desired_caps['appWaitActivity'] = 'com.hxwj.wkj/com.hxwj.wkj.act.ActMain'
-        # desired_caps['unicodeKeyboard'] = 'True'
-        # desired_caps['resetKeyboard'] = 'True'
+        desired_caps['unicodeKeyboard'] = 'True'
+        desired_caps['resetKeyboard'] = 'True'
 
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         self.driver.implicitly_wait(2)

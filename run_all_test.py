@@ -15,7 +15,8 @@ if __name__ =='__main__':
     runner = HTMLTestRunner(stream=fp,
                             title="自动化测试报告",
                             description="运行环境：android App",
-                            retry=1)
+                            retry=1,
+                            save_last_try=True)
 
     runner.run(discover)
 
