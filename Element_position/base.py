@@ -1,3 +1,5 @@
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class Page():
 
@@ -13,6 +15,11 @@ class Page():
     def open(self):
         self.driver.get(self.url)
         self.driver.implicitly_wait(self.time)
+
+    def wait_element_located(self,driver,locator):
+
+        wait = WebDriverWait(driver,20,0.5)
+        wait.until(EC.presence_of_element_located(locator))
 
     #二次封装元素定位的方法
     def find_element(self,*loc):

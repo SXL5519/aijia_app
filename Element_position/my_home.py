@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 class My_home():
     aijia_t=(By.ID,"com.tencent.mm:id/zq")###w   艾家公社体验版
     toRedPond=(By.CLASS_NAME,'android.widget.Image')###点击首页弹框
-    toRedPond_close= (By.CLASS_NAME, 'android.widget.Image')  ###首页弹框关闭
+    toRedPond_close= (By.XPATH, "//android.view.View/android.view.View[2]/android.view.View[1]/android.widget.Image[1]")  ###首页弹框关闭
     # me=(By.ID,'com.tencent.mm:id/cv')##点击我的
     me = (By.NAME,'我的')  ##点击我的
     phone=(By.XPATH,"//android.view.View[@text='请输入您的手机号']")
